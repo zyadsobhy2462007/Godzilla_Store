@@ -1,0 +1,272 @@
+/* ========================================
+   CUSTOM STYLES FOR GODZILLA PROJECT
+   Cleaned, Organized, Optimized CSS
+   ======================================== */
+
+/* Root Variables */
+:root {
+    --primary-gold: #f39c12;
+    --dark-bg: #0a0a0a;
+    --white: white;
+    --secondary: #ff2a6d;
+    --tertiary: #05d9e8;
+    --accent: #f2f542;
+    --accent-orange: #e67e22;
+    --purple: #a259ff;
+    --blue: #2c81ff;
+    --glow-blue: 0 0 20px rgba(5, 217, 232, 0.7);
+    --glow-secondary: 0 0 30px rgba(255, 42, 109, 0.7);
+}
+
+/* Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', 'Montserrat', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--white);
+    overflow-x: hidden;
+    cursor: none;
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: -1;
+}
+
+
+/* Floating Dots Background Effect */
+.floating-dots {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-orange);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatDot 5s linear infinite;
+    box-shadow: 0 0 8px var(--accent-orange), 0 0 15px var(--accent-orange);
+}
+
+@keyframes floatDot {
+    0% { transform: translateY(0) translateX(0); opacity: 0.4; }
+    50% { transform: translateY(-30px) translateX(10px); opacity: 0.8; }
+    100% { transform: translateY(-60px) translateX(-10px); opacity: 0.4; }
+}
+
+/* Loading Screen */
+#loading {
+    position: fixed;
+    inset: 0;
+    background: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1s ease-out;
+}
+
+.loader {
+    width: 120px;
+    height: 120px;
+    position: relative;
+}
+
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: var(--accent);
+    animation: spin 2s linear infinite;
+}
+
+.loader::after {
+    border-top-color: var(--accent-orange);
+    animation-direction: reverse;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loaded #loading {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Navbar */
+.admin-navbar {
+    background: rgba(10, 10, 10, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(243, 156, 18, 0.2);
+    padding: 12px 0;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(243, 156, 18, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.godzilla {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-gold);
+    animation: pulseLogo 2s infinite ease-in-out;
+    transition: 0.3s;
+}
+
+@keyframes pulseLogo {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(243, 156, 18, 0.4); }
+    50% { transform: scale(1.1); box-shadow: 0 0 25px rgba(243, 156, 18, 0.7); }
+}
+
+.nav-link {
+    color: var(--white) !important;
+    font-weight: 600;
+    margin: 0 12px;
+    padding: 10px 18px !important;
+    border-radius: 12px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link:hover {
+    color: var(--primary-gold) !important;
+    background: rgba(243, 156, 18, 0.08);
+    transform: translateY(-2px);
+    text-shadow: 0 0 10px rgba(243, 156, 18, 0.6);
+    border-bottom: 2px solid var(--primary-gold);
+}
+
+.cart-badge {
+    background: var(--white);
+    color: var(--dark-bg);
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: 5px;
+    font-weight: bold;
+    box-shadow: 0 0 5px var(--primary-gold);
+    min-width: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hero Section */
+.header-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zigzag-text {
+    font-family: 'Nosifer', cursive;
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--primary-gold);
+    letter-spacing: 3px;
+}
+
+.zigzag-text span {
+    display: inline-block;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Buttons */
+.btn-cart {
+    background: linear-gradient(90deg, #b47716, #91521a);
+    color: var(--white);
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(243, 156, 18, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 18px 50px;
+}
+
+.btn-cart:hover {
+    background: linear-gradient(90deg, #e67e22, #f1c40f);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(241, 196, 15, 1);
+    color: var(--dark-bg);
+}
+
+
+/* Content Wrapper */
+.content-wrapper {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px 0;
+    min-height: calc(100vh - 100px);
+}
+
+/* Glass Cards (Common Pattern) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-hero {
+        height: auto;
+        padding: 120px 0 60px;
+    }
+    
+    .zigzag-text {
+        font-size: 1.8rem;
+        display: block;
+    }
+    
+    .godzilla {
+        width: 50px !important;
+        height: 50px !important;
+    }}
+    
+
+/* Utility Classes */
+.text-gold { color: var(--primary-gold) !important; }
+.fw-bold { font-weight: 700 !important; }
+.gap-3 { gap: 1rem !important; }
+
